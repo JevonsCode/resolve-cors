@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>B</title>
+</head>
+<body>
+  <h1>B</h1>
+
+  <button id="get">获取数据</button>
+
+  <div>
+    <code id="content"></code>
+  </div>
+  <script>
+    // 模拟一个假路由
+    if(location.search.includes('iframe=1')) {
+      function receiveMessage(event) {
+        console.log('接收数据，存储', event.data)
+        localStorage.setItem('someKey', JSON.stringify({data: event.data}))
+      }
+      window.addEventListener('message', receiveMessage, false);
+    } else {
+      document.getElementById('get').onclick = () => {
+        console.log('get localStorage: ', localStorage.getItem('someKey'))
+        document.getElementById('content').innerText = JSON.stringify(JSON.parse(localStorage.getItem('someKey')), null, 4)
+      }
+    }
+  </script>
+</body>
+</html>

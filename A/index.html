@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A</title>
+</head>
+<body>
+  <h1>A</h1>
+
+  <input id="input" autofocus type="text" />
+  <iframe id="cashier" style="visibility: hidden; width: 0; height: 0;" src="http://127.0.0.1:8081?iframe=1"></iframe>
+  <button id="sendMessage" onclick="window.click()">发送数据</button>
+
+
+  <div style="padding-top: 40px;">
+    <a href="http://127.0.0.1:8081/">打开 B 页面</a>
+  </div>
+  <script>
+    const cw = document.getElementById('cashier').contentWindow
+
+    function click() {
+      console.log('iframe window', cw)
+      cw.postMessage('数据：' + document.getElementById('input').value, 'http://127.0.0.1:8081')
+    }
+  </script>
+</body>
+</html>

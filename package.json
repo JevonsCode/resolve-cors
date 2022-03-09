@@ -1,0 +1,16 @@
+{
+  "name": "psmsg",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "A": "http-server ./A -p 8080",
+    "B": "http-server ./B -p 8081",
+    "start": "pm2 start --name AAA npm -- run A && pm2 start --name BBB npm -- run B",
+    "delete": "pm2 delete all"
+  },
+  "dependencies": {
+    "http-server": "^14.1.0",
+    "pm2": "^5.1.2"
+  }
+}
